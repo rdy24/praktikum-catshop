@@ -16,16 +16,16 @@
   <body>
     <div class="container">
       <div class="sidebar">
-        <a href="../admin.html">Home</a>
-        <a href="../categories/categories.html">Categories</a>
-        <a href="transaction.html">Transaction</a>
+        <a href="../admin.php">Home</a>
+        <a href="../categories/categories.php">Categories</a>
+        <a href="transaction.php">Transaction</a>
       </div>
 
       <div class="right_content">
         <div class="navbar">
           <img src="../assets/logo.png" alt="" />
           <button class="btn">
-            <a href="../logout.html">Logout</a>
+            <a href="../logout.php">Logout</a>
           </button>
         </div>
         <div class="content">
@@ -44,13 +44,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Silva Tambunan</td>
-                <td>Anggora</td>
-                <td>450000</td>
-                <td>02-03-2022</td>
-                <td><a href="">Edit</a> | <a href="">Hapus</a></td>
-              </tr>
+              <?php 
+                include '../koneksi.php';
+                $sql = "SELECT * FROM tb_transaction";
+                $result = mysqli_query($koneksi, $sql);
+                while($data = mysqli_fetch_assoc($result)) {
+                  echo "
+                  <tr>
+                    <td>$data[nama]</td>
+                    <td>$data[jenis]</td>
+                    <td>$data[harga]</td>
+                    <td>$data[tanggal]</td>
+                    <td><a href=transaction-edit.php?id=$data[id]>Edit</a> | 
+                    <a href=transaction-hapus.php?id=$data[id]>Hapus</a></td>
+                  </tr>
+                  ";
+                }
+              ?>
             </tbody>
           </table>
         </div>

@@ -18,7 +18,7 @@
       <div class="sidebar">
         <a href="">Home</a>
         <a href="categories/categories.html">Categories</a>
-        <a href="transaction/transaction.html">Transaction</a>
+        <a href="transaction/transaction.php">Transaction</a>
       </div>
 
       <div class="right_content">
@@ -27,28 +27,35 @@
           <button class="btn">Logout</button>
         </div>
         <div class="content">
-          <h2 id="text">Selamat Datang, Admin!</h2>
+          <h2 id="text"></h2>
+          <p>
+            <?php 
+              session_start();
+              echo "Selamat Datang di Halaman Admin, " . $_SESSION['nama'];
+            ?>
+          </p>
         </div>
+
       </div>
     </div>
     <script>
       function myFunction() {
-        let nama = prompt("Masukkan Nama Anda : ", "Admin");
 
         let jam = new Date().getHours();
 
-        if (nama != null) {
+        if (jam) {
           if (jam >= 4 && jam <= 10) {
-            document.getElementById("text").innerHTML = `Selamat Pagi ${nama}`;
+            document.getElementById("text").innerHTML = `Selamat Pagi`;
           } else if (jam >= 11 && jam <= 14) {
-            document.getElementById("text").innerHTML = `Selamat Siang ${nama}`;
+            document.getElementById("text").innerHTML = `Selamat Siang`;
           } else if (jam >= 15 && jam <= 18) {
-            document.getElementById("text").innerHTML = `Selamat Sore ${nama}`;
+            document.getElementById("text").innerHTML = `Selamat Sore`;
           } else {
-            document.getElementById("text").innerHTML = `Selamat Malam ${nama}`;
+            document.getElementById("text").innerHTML = `Selamat Malam`;
           }
         }
       }
     </script>
+
   </body>
 </html>

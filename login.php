@@ -20,7 +20,7 @@
 
       <div class="form-login">
         <h3>Login</h3>
-        <form action="">
+        <form action="login-proses.php" method="post">
           <input
             class="input"
             type="text"
