@@ -17,14 +17,16 @@
     <div class="container">
       <div class="sidebar">
         <a href="">Home</a>
-        <a href="categories/categories.html">Categories</a>
+        <a href="categories/categories.php">Categories</a>
         <a href="transaction/transaction.php">Transaction</a>
       </div>
 
       <div class="right_content">
         <div class="navbar">
           <img src="assets/logo.png" alt="" />
-          <button class="btn">Logout</button>
+          <button class="btn">
+            <a href="logout.php">Logout</a>
+          </button>
         </div>
         <div class="content">
           <h2 id="text"></h2>

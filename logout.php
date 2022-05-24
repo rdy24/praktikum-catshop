@@ -4,7 +4,7 @@
     echo "
         <script>
             alert('Berhasil Logout');
-            window.location = 'login.html';
+            window.location = 'login.php';
         </script>
     ";
 ?>

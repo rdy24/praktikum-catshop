@@ -16,22 +16,25 @@
   <body>
     <div class="container">
       <div class="sidebar">
-        <a href="../admin.html">Home</a>
-        <a href="categories.html">Categories</a>
-        <a href="../transaction/transaction.html">Transaction</a>
+        <a href="../admin.php">Home</a>
+        <a href="categories.php">Categories</a>
+        <a href="../transaction/transaction.php">Transaction</a>
       </div>
 
       <div class="right_content">
         <div class="navbar">
           <img src="../assets/logo.png" alt="" />
           <button class="btn">
-            <a href="../logout.html">Logout</a>
+            <a href="../logout.php">Logout</a>
           </button>
         </div>
         <div class="content">
           <h3>Categories</h3>
           <button type="button" class="btn btn-tambah">
             <a href="categories-entry.html">Tambah Data</a>
+          </button>
+          <button type="button" class="btn">
+            <a href="categories-cetak.php">Cetak</a>
           </button>
           <table class="table-data">
             <thead>
@@ -43,12 +46,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><img src="../assets/thumbnail/anggora.png" alt="" /></td>
-                <td>Anggora</td>
-                <td>450000</td>
-                <td><a href="">Edit</a> | <a href="">Hapus</a></td>
-              </tr>
+              <?php 
+                include '../koneksi.php';
+                $sql = "SELECT * FROM tb_categories";
+                $result = mysqli_query($koneksi, $sql);
+                while($data = mysqli_fetch_assoc($result)) {
+                  echo "
+                    <tr>
+                      <td>
+                        <img src='../img_categories/$data[photo]' width='200px'>
+                      </td>
+                      <td>$data[categories]</td>
+                      <td>$data[price]</td>
+                      <td>
+                        <a href=categories-edit.php?id=$data[id]>Edit</a> | 
+                        <a href=categories-hapus.php?id=$data[id]>Hapus</a>
+                      </td>
+                    </tr>
+                  ";
+                }
+              ?>
             </tbody>
           </table>
         </div>
