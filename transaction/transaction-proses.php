@@ -9,14 +9,6 @@ if(isset($_POST['simpan'])) {
 
     $sql = "INSERT INTO tb_transaction VALUES(NULL, '$nama', '$jenis', '$harga', '$tanggal')";
 
-    $result = mysqli_query($koneksi, $sql);
-
-    // var_dump($result);
-    // var_dump($sql);
-    // var_dump($koneksi);
-    // die;
-
-
     if(empty($nama) || empty($jenis) || empty($harga) || empty($tanggal)) {
         echo "
             <script>

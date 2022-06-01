@@ -1,11 +1,11 @@
 <?php
 include('../koneksi.php');
-require_once("../dompdf/autoload.inc.php");
+require '../vendor/autoload.php';
 
 use Dompdf\Dompdf;
 $dompdf = new Dompdf();
 $query = mysqli_query($koneksi, "select * from tb_categories");
-$html .= '<center><h3>Daftar Categories</h3></center><hr/><br>';
+$html = '<center><h3>Daftar Categories</h3></center><hr/><br>';
 $html .= '<table border="1" width="100%">
 			<tr>
 				<th>No</th>
